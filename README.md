@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/klaus-2/FindBots-Botlist">
-    <img src="github-images/findbots-icon-logo.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/klaus-2/FindBots-Botlist/blob/main/static/github-images/findbots-icon-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">FindBots Botlist</h3>
@@ -62,13 +62,13 @@
 
 [![FindBots Homepage Preview][product-screenshot]](#)
 
-Estou criando esta botlist com intuito de aprendizado. Não será um projeto perfeito, longe disto, mas tentarei torna-lo o melhor que eu conseguir.
+I'm creating this botlist for learning purposes. It won't be a perfect project, far from it, but I'll try to make it the best I can.
 
-Estarei trabalhando devagar, aos poucos irei concluindo esta botlist. Caso tenha interesse em me ajudar, basta me procurar no Discord!
+I'll be working slowly, gradually I'll finish this botlist. If you're interested in helping me, just look for me at Discord!
 
-Meus objetivos são criar um website, uma dashboard, um bot integrado e uma api.
+My goals are to create a website, a dashboard, an integrated bot and an api.
 
-Sinta-se a vontade para sugerir susgestões ao decorrer do processo de criação, e se gostar deste projeto, por favor deixe uma ⭐. 
+Feel free to suggest suggestions during the creation process, and if you like this project, please leave one ⭐. 
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
