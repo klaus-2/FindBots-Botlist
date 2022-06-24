@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Submit your bot | FindBots</title>
+  <%- include('../partials/_head.ejs') %>
+  <link rel="stylesheet" href="../css/add.css">
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <%- include("../partials/_sidebar.ejs", { tags }) %>
+  <!-- NAVBAR -->
+  <%- include('../partials/_navbar.ejs') %>
+
+    <div id="main-wrapper" class="layout-page layout-page-detail layout-page-add" style="margin-bottom: 0px;">
+      <div id="bot-info">
+        <div class="bot-info-base">
+          <div class="container">
+            <div class="add-page-wrap">
+              <div class="anis-watch ggzone">
+                <div class="add-base">
+                  <div class="add-text-wrap" style="">
+                    <div class="add-text-block">
+                      <div class="pc-right">
+                        <div class="add-content-page add-message">
+                          <a class="btn btn-sm">
+                            <span class="m-hide">Submit your amazing bot here!</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                  <div class="add-content-form">
+                    <div id="add-content">
+                      <html lang="en">
+                      <body translate="no">
+                        <div class="container">
+                          <form class="steps" role="form" action="/addbot" method="POST">
+                          <ul id="progressbar">
+                            <li class="active">Bot information</li>
+                            <li>Page Custom</li>
+                            <li>Bot additional information</li>
+                            <li>Application</li>
+                            <li>Finish</li>
+                          </ul>
+
+                          <fieldset>
+                            <h2 class="fs-title">Basic Information</h2>
+                            <h3 class="fs-subtitle">We just need some basic information to begin your application</h3>
+
+                            <div class="hs_firstname field hs-form-field">
+                              <label for="botID">Bot ID <code>(Required)</code></label>
+                              <input id="botID" name="botID" title="The Bot ID cannot be longer than 20 characters." required="required" type="number" value="" maxlength="20" placeholder="" data-rule-required="true" data-msg-required="Please include your bot ID" aria-required="true">
+                              <span class="error1" style="display: none;">
+                                <i class="error-log fa fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+
+                            <div class="hs_email field hs-form-field">
+                              <label for="ownerID">Owner ID <code>(Required)</code></label>
+                              <small style="position: absolute;padding-top: 88px;margin-left: -147px;">We already know who you are ;)</small>
+                              <input id="ownerID" name="email" required="required" type="text" value="<%- req.user.id %>" placeholder="" data-rule-required="true" data-msg-required="Please enter a valid email address." aria-required="true" disabled>
+                              <span class="error1" style="display: none;">
+                                <i class="error-log fa fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+
+                            <div class="hs_email field hs-form-field hs_total_number_of_constituents_in_your_database">
+                              <label for="additionalOwners">Additional Bot Owner IDs</label>
+                              <small style="position: absolute;padding-top: 88px;margin-left: -186px;">Separate each ID with a space! (Optional)</small>
+                              <input id="additionalOwners" class="form-text hs-input" name="additionalOwners" size="60" maxlength="128" type="text" value="" placeholder="">
+                              <span class="error1" style="display: none;">
+                                <i class="error-log fa fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+
+                            <input type="button" data-page="1" name="next" class="next action-button" value="Next">
+                            <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3"><i class="question-log fa fa-question-circle"></i> What Is This?</div>
+                          </fieldset>
+
+                          <fieldset>
+                            <h2 class="fs-title">Page Custom</h2>
+                            <h3 class="fs-subtitle">Pre-customize essential basic information for your bot. You can change them and other information later!</h3>
+
+                            <div class="form-item webform-component webform-component-textfield hs_total_number_of_donors_in_year_1 field hs-form-field" id="webform-component-acquisition--amount-1">
+                              <label for="prefix">Bot Prefix <code>(Required)</code></label>
+                              <input id="prefix" class="form-text hs-input" name="prefix" title="The prefix used to trigger your bot." required="required" size="60" maxlength="15" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter the prefix of your bot" aria-required="true">
+                              <span class="error1" style="display: none;">
+                                <i class="error-log fa fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+      
+                            <div class="form-item webform-component webform-component-textfield hs_total_number_of_donors_in_year_1 field hs-form-field" id="webform-component-acquisition--amount-1">
+                              <label for="library">Bot Library * <code>(Required)</code></label>
+                              <select name="library" id="library" class="form-text hs-input" required="required" value="" data-rule-required="true" data-msg-required="Please select the library corresponding to your bot" aria-required="true" title="The code library your bot uses to connect to Discord." style="position: relative;background: var(--shade0);color: var(--shade10);border-radius: var(--br);overflow: hidden;font-size: var(--sp-4);outline: none;display: block;width: 100%;margin: 0 0 20px;padding: 10px 15px;border: 1px solid #d9d9d9;box-sizing: border-box;">
+                                <option disabled="disabled" value="" selected="selected"></option>
+                                <option value="Custom Library">
+                                  Custom Library
+                                </option>
+                                <optgroup label="C#">
+                                  <option value="Discord.Net">
+                                    Discord.Net
+                                  </option>
+                                  <option value="DSharpPlus">
+                                    DSharpPlus
+                                  </option>
+                                  <option value="DiscordUnity">
+                                    DiscordUnity
+                                  </option>
+                                  <option value="DiscordSharp">
+                                    DiscordSharp
+                                  </option>
+                                </optgroup>
+                                <optgroup label="C++">
+                                  <option value="aegis.cpp">
+                                    aegis.cpp
+                                  </option>
+                                  <option value="D++">
+                                    D++
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Crystal">
+                                  <option value="discordcr">
+                                    discordcr
+                                  </option>
+                                </optgroup>
+                                <optgroup label="D">
+                                  <option value="dscord">
+                                    dscord
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Dart">
+                                  <option value="Discord Dart">
+                                    Discord Dart
+                                  </option>
+                                  <option value="Nyxx">
+                                    Nyxx
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Elixir">
+                                  <option value="Nostrum">
+                                    Nostrum
+                                  </option>
+                                  <option value="coxir">
+                                    coxir
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Go">
+                                  <option value="DiscordGo">
+                                    DiscordGo
+                                  </option>
+                                  <option value="Disgord">
+                                    Disgord
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Java">
+                                  <option value="JDA">
+                                    JDA
+                                  </option>
+                                  <option value="Discord4J">
+                                    Discord4J
+                                  </option>
+                                  <option value="Javacord">
+                                    Javacord
+                                  </option>
+                                  <option value="catnip">
+                                    catnip
+                                  </option>
+                                </optgroup>
+                                <optgroup label="JavaScript">
+                                  <option value="detritus">
+                                    detritus
+                                  </option>
+                                  <option value="Discordeno">
+                                    Discordeno
+                                  </option>
+                                  <option value="harmony">
+                                    harmony
+                                  </option>
+                                  <option value="discord.js">
+                                    discord.js
+                                  </option>
+                                  <option value="slash-create">
+                                    slash-create
+                                  </option>
+                                  <option value="Slshx">
+                                    Slshx
+                                  </option>
+                                  <option value="Eris">
+                                    Eris
+                                  </option>
+                                  <option value="discord.io">
+                                    discord.io
+                                  </option>
+                                  <option value="Discordie">
+                                    Discordie
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Julia">
+                                  <option value="Discord.jl">
+                                    Discord.jl
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Lua">
+                                  <option value="Discordia">
+                                    Discordia
+                                  </option>
+                                  <option value="litcord">
+                                    litcord
+                                  </option>
+                                </optgroup>
+                                <optgroup label="PHP">
+                                  <option value="DiscordPHP">
+                                    DiscordPHP
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Python">
+                                  <option value="hikari">
+                                    hikari
+                                  </option>
+                                  <option value="discord.py">
+                                    discord.py
+                                  </option>
+                                  <option value="interactions.py">
+                                    interactions.py
+                                  </option>
+                                  <option value="disco">
+                                    disco
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Ruby">
+                                  <option value="discordrb">
+                                    discordrb
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Rust">
+                                  <option value="discord-rs">
+                                    discord-rs
+                                  </option>
+                                  <option value="twilight">
+                                    twilight
+                                  </option>
+                                  <option value="serenity">
+                                    serenity
+                                  </option>
+                                </optgroup>
+                                <optgroup label="Swift">
+                                  <option value="SwiftDiscord">
+                                    SwiftDiscord
+                                  </option>
+                                  <option value="Sword">
+                                    Sword
+                                  </option>
+                                </optgroup>
+                              </select>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="shortDesc" id="webform-component-acquisition--amount-2">
+                              <label for="edit-submitted-acquisition-amount-2 total_number_of_donors_in_year_2-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Short Description <code>(Required)</code></label>
+                              <input id="shortDesc" class="form-text hs-input" title="A short overview of what your bot does." name="shortDesc" required="required" size="60" maxlength="128" type="text" value="" placeholder="" data-rule-required="true" data-msg-required="Please enter a short desc" aria-required="true">
+                              <span class="error1" style="display: none;">
+                                <i class="error-log fa fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+
+                            <div class="form-item webform-component webform-component-textfield webform-container-inline hs_total_donor_percent_change field hs-form-field">
+                              <label for="longDesc">Long Description <code>(Required)</code></label>
+                              <small style="position: absolute;padding-top: 214px; margin-left: -203px;">Supports HTML and Markdown!</small>
+                              <textarea class="form-control" name="longDesc" id="longDesc" title="Long description for your bot. Go into a lot of detail here about the cool stuff your bot can do!" rows="6" placeholder="Content.." data-rule-required="true" data-msg-required="Please enter long desc" aria-required="true"></textarea>
+                            </div>
+
+                            <input type="button" data-page="2" name="previous" class="previous action-button" value="Previous">
+                            <input type="button" data-page="2" name="next" class="next action-button" value="Next">
+                            <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div>
+                          </fieldset>
+
+                          <fieldset>
+                            <h2 class="fs-title">Bot additional information</h2>
+                            <h3 class="fs-subtitle">Some additional details to make your bot more attractive to the public.</h3>
+
+                            <div class="form-item webform-component webform-component-textfield hs_average_gift_size_in_year_2 field hs-form-field" id="webform-component-cultivation--amount-2">
+                              <label for="website">Website</label>
+                              <input id="website" class="form-text hs-input" title="Optional link for your bot's website" name="website" size="60" maxlength="128" type="text" value="" placeholder="">
+                              <span class="error1" style="display: none;">
+                                <i class="error-log fa fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+
+                            <div class="form-item webform-component webform-component-textfield webform-container-inline hs_average_gift_size_percent_change field hs-form-field" id="webform-component-cultivation--percent-change1">
+                              <label for="github">Github</label>
+                              <input id="github" class="form-text hs-input" title="Optional link for the source code of your bot if it's available." name="github" size="60" maxlength="128" type="text" value="" placeholder="">
+                            </div>
+
+                            <div class="form-item webform-component webform-component-textfield webform-container-inline hs_average_gift_size_percent_change field hs-form-field" id="webform-component-cultivation--percent-change1">
+                              <label for="donationLink">Donation Link</label>
+                              <input id="donationLink" class="form-text hs-input" title="Optional link for the source code of your bot if it's available." name="donationLink" size="60" maxlength="128" type="text" value="" placeholder="">
+                            </div>
+                            
+                            <div id="webform-component-cultivation--percent-change1" style="display: flex;flex-direction: column;align-items: stretch;">
+                              <label for="mainLanguage">Bot Main Language <code>(Required)</code></label>
+                              <select id="mainLanguage" class="form-text hs-input" name="mainLanguage" style="position: relative;background: var(--shade0);color: var(--shade10);border-radius: var(--br);overflow: hidden;font-size: var(--sp-4);outline: none;display: block;width: 100%;margin: 0 0 20px;padding: 10px 15px;border: 1px solid #d9d9d9;box-sizing: border-box;" required="required" data-rule-required="true" data-msg-required="Please choose your bot main language" aria-required="true">
+                                <option value="EN">English</option>
+                                <option value="PTBR">Portuguese</option>
+                                <option value="IT">Italian</option>
+                              </select>
+                              <label for="mainLanguage">Bot Sub Languages </label>
+                              <small style="position: absolute;padding-top: 256px; margin-left: 0px;">Use CTRL for multiple options</small>
+                              <select id="subLanguage" class="form-text hs-input" name="subLanguage" style="position: relative;background: var(--shade0);color: var(--shade10);border-radius: var(--br);font-size: var(--sp-4);outline: none;display: block;width: 100%;margin: 0 0 20px;padding: 10px 15px;border: 1px solid #d9d9d9;box-sizing: border-box;" multiple>
+                                <option value="EN">English</option>
+                                <option value="PTBR">Portuguese</option>
+                                <option value="IT">Italian</option>
+                                <option value="EN">English</option>
+                                <option value="PTBR">Portuguese</option>
+                                <option value="IT">Italian</option>
+                                <option value="EN">English</option>
+                                <option value="PTBR">Portuguese</option>
+                                <option value="IT">Italian</option>
+                              </select>
+                            </div>
+                            <input type="button" data-page="3" name="previous" class="previous action-button" value="Previous">
+                            <input type="button" data-page="3" name="next" class="next action-button" value="Next">
+                            <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div>
+                          </fieldset>
+
+                          <fieldset>
+                            <h2 class="fs-title">Application</h2>
+                            <h3 class="fs-subtitle">Something you want to inform the moderators testing your bot about.</h3>
+                            <div class="form-item webform-component webform-component-textfield" id="webform-component-cultivation--amount-3 hs_total_giving_in_year_1 field hs-form-field">
+
+                              <label for="note">Note for reviewer</label>
+
+                              <input id="note" class="form-text hs-input" name="note" size="60" maxlength="512" type="text" value="" placeholder="">
+                              <span class="error1" style="display: none;">
+                                <i class="error-log fa fa-exclamation-triangle"></i>
+                              </span>
+                            </div>
+
+                            <input type="button" data-page="4" name="previous" class="previous action-button" value="Previous">
+                            <input type="button" data-page="4" name="next" class="next action-button" value="Next">
+                            <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div>
+                          </fieldset>
+
+                          <fieldset>
+                            <h2 class="fs-title">Congrulations!</h2>
+                            <h3 class="fs-subtitle">On submit we will attempt to add you to our Discord server, you may leave once your bot is approved. <br><br>
+                              You are added so that if we find any issues with your bot during our testing phase we can notify you, easily and quickly.</h3>
+                            <input type="button" data-page="5" name="previous" class="previous action-button" value="Previous">
+                            <input type="submit" class="hs-button primary large action-button next" name="submit" id="submit">
+                            <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div>
+                          </fieldset>
+
+                          <fieldset>
+                            <h2 class="fs-title">Wait!</h2>
+                            <h3 class="fs-subtitle">Returning to the beginning in a few seconds...</h3>
+                            <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div>
+                          </fieldset>
+                        </form>
+                        <div class="modal-overlay"></div>
+                      </body>
+                      </html>
+                    </div>
+                  </div>
+
+                  <div id="add-rules-content">
+                    <div class="rules-block">
+                      <div id="add-rules-list" class="content-rules">
+                        <div class="detail-infor-content">
+                          <div class="rr-list">
+                            <div class="col-md-3">
+                              <div class="rules" style="width: 263px; padding: 0.75rem 1.25rem;color: #ffffff; background-color: #14151a;">
+                                <h3 class="text-center">Bot Rules</h3>
+                                <hr class="m-2">
+                                <b>#1:</b> Be online when its submitted for reviewal.<br><br>
+                                <b>#2:</b> Bots that generate accounts/gifts from other services aren't allowed.<br><br>
+                                <b>#3:</b> It must be public (Can be invited)<br><br>
+                                <b>#5:</b> A help command or documentation is required.<br><br>
+                                <b>#6:</b> Must follow Discord ToS.<br><br>
+                                <b>#7:</b> Must not reply to other bots.<br><br>
+                                <b>#8:</b> Must have at least one feature.<br><br>
+                                <b>#9:</b> Clones of others bots are not allowed.<br><br>
+                                <b>#10:</b> NSFW content should be locked to #testing-nsfw.<br><br>
+                                <b>#11:</b> Owner commands (Eval, exec etc.) should be locked to the owner(s).<br><br>
+                                <b>#12:</b> DMing users upon joining FindBots is not allowed.<br><br>
+                                <b>#13:</b> Commands must be initiated by a prefix and command.<br><br>
+                                <b>#14:</b> All relevant user rules apply to bots as well.<br><br>
+                                <b>#15:</b> No botting, alting or faking votes to get higher on the vote leaderboard.<br>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%- include('../partials/_footer.ejs') %>
+    </div>
+    <div id="mask-overlay"></div>
+    
+  <!-- basic essentials -->
+  <script type="text/javascript" src="js/3.3.1-jquery.min.js"></script>
+  <script type="text/javascript" src="js/js-bootstrap.bundle.min.js"></script>
+  <script src="js/add.js"></script>
+
+  <!-- for form -->
+  <script type="text/javascript" src="js/js-bootstrap.bundle.min.js"></script>
+  <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+
+  <!-- For detect users in mobile device -->
+  <script src="js/mobile-detect@1.4.4-mobile-detect.min.js"></script>
+</body>
+
+</html>

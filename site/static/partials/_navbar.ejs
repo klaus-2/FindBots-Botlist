@@ -1,0 +1,116 @@
+<div id="wrapper" style="background: #121417;">
+  <div id="header" class="header-home">
+    <div class="container">
+      <div id="mobile_menu">
+        <i class="fa fa-bars"></i>
+      </div>
+      <a href="/" id="logo">
+        <img src="<%- domain %>/images/navbar-minilogo.png" alt="FindBots">
+        <div class="clearfix"></div>
+      </a>
+      <div id="search">
+        <div class="search-content">
+          <form action="/search" autocomplete="off">
+            <a href="/search" class="filter-icon">Filter</a>
+            <input type="text" class="form-control search-input" name="nome" placeholder="Search for the top Servers, Bots in Discord...">
+            <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+          </form>
+          <div class="nav search-result-pop" id="search-suggest" style="display: none;">
+            <div class="loading-relative" id="search-loading" style="display: none;">
+              <div class="loading">
+                <div class="span1"></div>
+                <div class="span2"></div>
+                <div class="span3"></div>
+              </div>
+            </div>
+            <div class="result" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="header-group">
+        <div class="socials-icons">
+          <div class="socials-title">
+            <span class="top">Join our</span><span class="bottom">Discord</span>
+          </div>
+          <div class="socials-list">
+            <div class="item">
+              <a href="https://discord.gg/" target="_blank" class="socials-button-icon dc-btn"><i class="fab fa-discord"></i></a>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="header-setting">
+        <div class="hs-toggles">
+          <a href="/addbot" class="hst-item" data-toggle="tooltip" title="Submit a bot">
+            <div class="hst-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <div class="name"><span>Add bot</span></div>
+          </a>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <% if (!req.user) { %>
+      <div id="header_right">
+        <a href="/login" class="btn btn-primary btn-md text-white">Login</a>
+      </div>
+      <% } else { %>
+      <div id="header_right">
+        <div class="hr-notifications">
+          <div class="hrn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            <i class="fas fa-bell"></i>
+          </div>
+          <div class="dropdown-menu dropdown-menu-noti new-noti-list" aria-labelledby="noti-list" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(5px, 40px, 0px);">
+            <div class="nnl-mark">
+              <center>Notifications</center>
+            </div>
+
+            <div class="text-center">
+              <small class="color-white pt-2 pb-2">No notifications</small>
+            </div>
+
+            <a class="nnl-item nnl-more" href="/me/notifications">
+              <div class="text-center">View all</div>
+            </a>
+
+          </div>
+        </div>
+        <div id="user-slot">
+          <div class="header_right-user logged">
+            <div class="dropdown">
+              <div class="btn-user-avatar" data-toggle="dropdown" aria-expanded="false" aria-controls="user_menu">
+                <div class="profile-avatar">
+                  <img src="https://cdn.discordapp.com/avatars/<%= req.user.id %>/<%= req.user.avatar %>?size=1024" alt="<%= req.user.username %>">
+                </div>
+              </div>
+              <div id="user_menu" class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(45px, 40px, 0px);">
+                <div class="dropdown-item dropdown-item-user">
+                  <div class="user-detail">
+                    Welcome <div class="name"><strong><%= req.user.username %></strong><small>#<%= req.user.discriminator %></small></div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="grid-menu">
+                  <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>My Account</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>My Bots</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Settings</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Notifications</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i> API</a>
+                  <div class="clearfix"></div>
+                </div>
+                <a class="dropdown-item text-right text-white" href="/logout">Logout<i class="fas fa-arrow-right ml-2 mr-1"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <div id="mobile_search" class=""><i class="fa fa-search"></i></div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>

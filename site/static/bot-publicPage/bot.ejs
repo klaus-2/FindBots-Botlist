@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Add <%- db.botName %> Discord Bot | Find Bot List</title>
+  <%- include('../partials/_head.ejs') %>
+  <link rel="stylesheet" href="<%- domain %>/css/bot-custom-avatar.css">
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <%- include("../partials/_sidebar.ejs", { tags }) %>
+  <!-- NAVBAR -->
+  <%- include('../partials/_navbar.ejs') %>
+
+    <div id="main-wrapper" class="layout-page layout-page-detail">
+      <div id="bot-info">
+        <div class="bot-info-base">
+          <div class="container">
+            <div class="bot-info-wrap">
+              <div class="bot-bg" style="background-image: url(https://images-ext-2.discordapp.net/external/-oeVdTf8KIcykvDcj1pn5BVAIo3q8-5Unh8_giKjx4Y/https/img.freepik.com/fotos-gratis/fundo-de-fumaca-de-cor_71163-196.jpg)">
+              </div>
+            </div>
+            <div class="bot-content">
+              <div class="bot-pic">
+                <div class="bot-icon">
+                  <div class="un-photo" style="background-image: url('<%- db.botAvatar %>'); --row-total: 5;">
+                    <img src="<%- db.botAvatar %>" />
+                    <div class="un-photo__popup">
+                      <img src="<%- db.botAvatar %>" />
+                      <div class="un-photo__row" style="--row-index: 0; --random: 0.23">
+                        <div class="un-photo__row-inner"></div>
+                      </div>
+                      <div class="un-photo__row" style="--row-index: 1; --random: 0.72">
+                        <div class="un-photo__row-inner"></div>
+                      </div>
+                      <div class="un-photo__row" style="--row-index: 2; --random: 0.11">
+                        <div class="un-photo__row-inner"></div>
+                      </div>
+                      <div class="un-photo__row" style="--row-index: 3; --random: 0.50">
+                        <div class="un-photo__row-inner"></div>
+                      </div>
+                      <div class="un-photo__row" style="--row-index: 4; --random: 0.39;">
+                        <div class="un-photo__row-inner"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-bot-base">
+                <div class="prebreadcrumb">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="/">Home</a></li>
+                      <li class="breadcrumb-item"><a href="<%- domain %>/search?<%= db.tags[0] %>"><%- db.tags[0] %></a>
+                      </li>
+                      <li class="breadcrumb-item dynamic-name active" title="<%= db.botName %>"><%= db.botName %></li>
+                    </ol>
+                  </nav>
+                </div>
+                <h2 class="recents-bot-name dynamic-name" title="<%= db.botName %>"><%= db.botName %></h2>
+                <div id="mal-sync"></div>
+                <div class="bot-langs">
+                  <span class="item">
+                    <div class="slider-bot-langs bot-main-lang">
+                      <%= db.mainLanguage %>
+                    </div>
+                  </span>
+                  <% let languages = db.subLanguages %>
+                  <% for(const lang of languages) {%>
+                  <span class="item">
+                    <div class="slider-bot-langs bot-sub-lang">
+                      <%= lang %>
+                    </div>
+                  </span>
+                  <% }; %>
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="bot-buttons">
+                  <a href="/bot/<%= db.botID %>/invite" class="btn btn-radius btn-primary btn-play"><i class="fa-solid fa-plus"></i> Invite</a>
+
+                  <div class="dr-fav" id="button-bot-content">
+                    <a href="/bot/<%= db.botID %>/vote" class="btn btn-radius btn-vote btn-play"><i class="fa-solid fa-angle-up"></i> Vote</a>
+                  </div>
+                  <div class="dr-fav" id="button-bot-content">
+                    <div class="input-group mb-3 d-flex justify-content-center">
+                      <div class="input-group-prepend">
+                        <% if (req.user && db.ownerID == req.user.id) { %>
+                          <form class="preform preform-dark comment-form" role="form" action="/bot/<%= db.botID %>" method="POST">
+                          <button id="refresh" name="refresh" type="submit" class="btn btn-light butao1"><i class="fa-solid fa-rotate"></i> Refresh Data</button>
+                        </form>
+                        <button type="button" class="btn btn-light butao1"><i class="fa-solid fa-pen"></i> Manage</button>
+                        <% } %>
+                        <button type="button" class="btn btn-light dropdown-toggle butao2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="/bot/<%= db.botID %>/report">Reportar</a>
+                          <a class="dropdown-item" href="#">Copiar ID</a>
+                          <a class="dropdown-item" href="/bot/<%= db.botID %>/support">Support Server</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bot-page-desc m-hide">
+                  <div class="text">
+                    <%= db.shortDesc %>
+                  </div>
+                </div>
+              </div>
+              <div class="bot-page-wrap">
+                <div class="info-bot">
+                  <div class="item item-title">
+                    <span class="item-head">Library:</span>
+                    <span class="name"><%= db.library %></span>
+                  </div>
+
+                  <div class="item item-title">
+                    <span class="item-head">Prefix:</span>
+                    <span class="name"><%= db.prefix %></span><span class="dot"></span><code><%= db.prefix %>help</code>
+                  </div>
+
+                  <div class="item item-title">
+                    <span class="item-head">Website:</span>
+                    <a href="<%= db.website %>"><%= db.website %></a>
+                  </div>
+                  <div class="item item-title">
+                    <span class="item-head">Github:</span>
+                    <span class="name"><%= db.github || "No." %></span>
+                  </div>
+                  <div class="item item-title">
+                    <span class="item-head">Added:</span>
+                    <span class="name"><%= moment(db.joinDate).fromNow(); %></span>
+                  </div>
+                  <div class="item item-title">
+                    <span class="item-head">Upvotes:</span>
+                    <span class="name"><%= db.upvotes %></span>
+                  </div>
+                  <div class="item item-title">
+                    <span class="item-head">Server Count:</span>
+                    <span class="name"><a><%= db.serverCount %></a></span>
+                  </div>
+
+                  <div class="item item-list">
+                    <span class="item-head">Tags:</span>
+                    <% let bottags = db.tags; %>
+                    <% for(const btags of bottags) { %>
+                    <a href="<%- domain %>/search?<%= btags %>" title="<%= btags %>"><%= btags %></a>
+                    <% }; %>
+                  </div>
+
+                  <div class="item item-title">
+                    <span class="item-head">Shard Count:</span>
+                    <a class="name"><%- db.shardCount %></a>
+                  </div>
+
+                  <div class="item item-title">
+                    <span class="item-head">Socials:</span>
+                    <% if (db.socials.twitter) { %>
+                    <a class="name" href="https://twitter.com/<%= db.socials.twitter %>">Twitter</a>
+                    <span class="dot"></span>
+                    <% } %>
+
+                    <% if (db.socials.reddit) { %>
+                    <a class="name" href="<%= db.socials.reddit %>">Reddit</a>
+                    <span class="dot"></span>
+                    <% } %>
+
+                    <% if (db.socials.telegram) { %>
+                    <a class="name" href="<%= db.socials.telegram %>">Telegram</a>
+                    <span class="dot"></span>
+                    <% } %>
+
+                    <% if (db.socials.tiktok) { %>
+                    <a class="name" href="<%= db.socials.tiktok %>">Tiktok</a>
+                    <span class="dot"></span>
+                    <% } %>
+
+                    <% if (db.socials.instagram) { %>
+                    <a class="name" href="<%= db.socials.instagram %>">Instagram</a>
+                    <span class="dot"></span>
+                    <% } %>
+
+                    <% if (db.socials.facebook) { %>
+                    <a class="name" href="<%= db.socials.facebook %>">Facebook</a>
+                    <span class="dot"></span>
+                    <% } %>
+
+                    <% if (db.socials.youtube) { %>
+                    <a class="name" href="<%= db.socials.youtube %>">Youtube</a>
+                    <span class="dot"></span>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div id="main-content">
+          <section class="trends-block owner-block-devs">
+            <div class="trends-block-header">
+              <div class="float-left trends-heading mr-4">
+                <h2 class="trends-title">Owner &amp; Developers</h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="block-staff-content">
+              <div class="bac-list-wrap">
+                <div class="bac-item">
+                  <div class="per-info ltr">
+                    <a href="/user/<%= db.ownerID %>" class="pi-avatar">
+                      <% if (db.ownerID) { %>
+                      <img data-src="https://cdn.discordapp.com/avatars/<%= db.ownerID %>/<%= ownerAvatar %>?size=1024" src="https://cdn.discordapp.com/avatars/<%= db.ownerID %>/<%= ownerAvatar %>?size=1024" alt="<%= db.ownerTag %> Pic" class="lazyload" />
+                      <% } else { %>
+                      <img src="//cdn.discordapp.com/embed/avatars/2.png" alt="image" />
+                      <% } %>
+                      <div class="pi-detail">
+                        <h4 class="pi-name">
+                          <a href="/user/<%= db.ownerID %>"><%= db.ownerTag %></a>
+                        </h4>
+                        <span class="pi-role">Owner</span>
+                      </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+                <% for(const owner of additionalOwners) { %>
+                <div class="bac-item">
+                  <div class="per-info ltr">
+                    <a href="/user/<%= owner.id %>" class="pi-avatar">
+                      <% if (owner) { %>
+                      <img data-src="https://cdn.discordapp.com/avatars/<%= owner.id %>/<%= owner.avatar %>?size=1024" src="https://cdn.discordapp.com/avatars/<%= owner.id %>/<%= owner.avatar %>?size=1024" alt="<%= owner.username %> Pic" class="lazyload" />
+                      <% } else { %>
+                      <img src="//cdn.discordapp.com/embed/avatars/2.png" alt="image" />
+                      <% } %>
+                      <div class="pi-detail">
+                        <h4 class="pi-name">
+                          <a href="/user/<%= owner.id %>"><%= owner.username %></a>
+                        </h4>
+                        <span class="pi-role">Developer</span>
+                      </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <% } %>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </section>
+
+          <section class="trends-block long-desc-block">
+            <div class="trends-block-header">
+              <div class="float-left trends-heading mr-4">
+                <h2 class="trends-title">About <%- db.botName %></h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="trends-block-content trends-block-certified-list">
+              <div class="bot-items">
+                <div class="card p-3 bot__desccard" style="background: #181a20;">
+                  <div class="botdesc markdown">
+                    <style>
+                      .navbar {
+                        background: linear-gradient(90deg, rgba(248, 132, 132, 1) 0%, rgba(254, 234, 212, 1) 100%) !important;
+                      }
+                    </style>
+                    <%- markdown.render(db.longDesc) %>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </section>
+          <div class="clearfix"></div>
+
+          <section class="trends-block trends-block-comment">
+            <div class="trends-block-header trends-block-header-tabs">
+              <div class="float-left trends-heading mr-4">
+                <h2 class="trends-title">Reviews <small>beta</small></h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="random-content">
+              <div class="show-comments">
+                <div id="content-comments" class="comments-wrap">
+                  <div class="sc-header" style="font-size:14px !important; font-weight: 400 !important;">
+                    <div class="sc-h-from">
+                      <a class="btn btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/" style="color: white;">
+                        <%= db.botName %></a>
+                    </div>
+                    <div class="sc-h-title">
+                      <i class="far fa-comment-alt mr-2"></i><%- reviews.length %><span> Reviews</span>
+                    </div>
+
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="sc-header" style="font-size:14px !important; font-weight: 400 !important;">
+                    Avoid swearing and cursing, we do not tolerate any form of racism, sexism or any other form of prejudice, spam is also monitored, your account may be blocked permanently without return.
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="comment-input">
+                    <div class="user-avatar">
+                      <% if (req.user) { %>
+                        <img class="user-avatar-img" src="https://cdn.discordapp.com/avatars/<%= req.user.id %>/<%= req.user.avatar %>?size=1024">
+                        <% } else { %>
+                      <img class="user-avatar-img" src="../../images/mini-logo.png">
+                      <% } %>
+                    </div>
+                    <% if (!req.user) { %>
+                    <div class="ci-form">
+                      <div class="user-name">
+                        You need to do
+                        <a class="link-highlight" href="/login">
+                          login</a> to evaluate this bot.
+                      </div>
+                      <form class="preform preform-dark comment-form">
+                        <textarea disabled class="form-control form-control-textarea comment-subject emo-on cm-input-base" id="df-cm-content" name="content" maxlength="3000" placeholder="Write something about <%= db.botName %>..." required=""></textarea>
+                        <div class="ci-emo">
+                          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="cb-icon">
+                            <i class="fas fa-laugh"></i>
+                          </div>
+                          <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal dr-bottom-right dropdown-menu-emo" style="max-height: 400px !important">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <% } else { %>
+                    <div class="ci-form">
+                      <div class="user-name">
+                        Evaluate how <span class="link-highlight"><%= req.user.username %></span>
+                      </div>
+                      <form class="preform preform-dark comment-form" role="form" action="/bot/<%= db.botID %>" method="POST">
+                        <textarea class="form-control form-control-textarea comment-subject emo-on cm-input-base" id="content" name="content" maxlength="3000" placeholder="Write something about <%= db.botName %>..." required=""></textarea>
+                        <div class="ci-emo">
+                          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="cb-icon"><i class="fas fa-laugh"></i></div>
+                          <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal dr-bottom-right dropdown-menu-emo" style="max-height: 400px !important;">
+                            <emoji-picker data-input=".cm-input-base"></emoji-picker>
+                          </div>
+                        </div>
+                        <div class="ci-buttons" id="df-cm-buttons" style="">
+                          <div class="alert alert-danger cm-error mt-1" style="display: none;"></div>
+                          <div class="ci-b-right">
+                            <div class="cb-li">
+                              <button id="newcomment" name="newcomment" type="submit" class="btn btn-sm btn-primary ml-2">Submit</button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <% } %>
+                  <div class="list-comment">
+                    <div class="cw_list">
+                      <% if (reviews) { %>
+                      <% reviews.forEach((review, count) => {%>
+                      <div class="cw_l-line" id="cm-<%- count + 1 %>">
+                        <div class="user-avatar">
+                          <% for (const rev of rData) { %>
+                          <% if (review.userID == rev.id) { %>
+                          <img class="user-avatar-img" src="https://cdn.discordapp.com/avatars/<%= review.userID %>/<%= rev.avatar %>?size=1024" %>">
+                          <% } %>
+                          <% } %>
+                        </div>
+                        <div class="info">
+                          <div class="ihead">
+                            <div class="user-name"><%= review.userName %>
+                              <small class="text-success"><%= review.userTag %></small>
+                            </div>
+
+                            <div class="time">
+                              <%= moment(review.date).fromNow(); %>
+                            </div>
+                          </div>
+                          <div class="ibody">
+                            <p>
+                              <%= review.comment %>
+                            </p>
+                          </div>
+                          <div class="ibottom">
+                            <div class="ib-li ib-reply">
+                              <a class="btn" onclick="responderComentario(<%- count + 1 %>)"><i class="fas fa-reply mr-1"></i>Reply</a>
+                            </div>
+                            <div class="ib-li ib-like">
+                              <a class="btn cm-btn-vote">
+                                <i class="far fa-thumbs-up mr-1"></i><span class="value"><%= review.like %></span>
+                              </a>
+                            </div>
+                            <div class="ib-li ib-dislike">
+                              <a class="btn cm-btn-vote">
+                                <i class="far fa-thumbs-down mr-1"></i><span class="value"><%= review.dislike %></span>
+                              </a>
+                            </div>
+
+                            <div class="ib-li">
+                              <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
+                              <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
+                                <a class="dropdown-item cm-report" href="javascript:;" data-type="1" data-id="<%- count + 1 %>">Report Spam</a>
+                                <% if (req.user && req.user.id == review.userID) { %>
+                                <a class="dropdown-item cm-report" onclick="responderComentario(<%- count + 1 %>)">Delete comment </a>
+                                <% } %>
+                              </div>
+                            </div>
+
+                            <div class=" clearfix">
+                            </div>
+                            <% if (req.user) { %>
+                            <div id="reply-<%- count + 1 %>" class="comment-input is-reply reply-block" style="display: none;">
+                              <div class="user-avatar">
+                                <img class="user-avatar-img" src="https://cdn.discordapp.com/avatars/<%= req.user.id %>/<%= req.user.avatar %>?size=1024">
+                              </div>
+
+                              <div class="ci-form">
+                                <form class="preform preform-dark comment-form-<%- count + 1 %>">
+                                  <textarea class="form-control form-control-textarea comment-subject emo-on cm-input-<%- count + 1 %>" id="df-cm-content-<%- count + 1 %>" maxlength="3000" placeholder="Write your answer here..." required=""></textarea>
+
+                                  <div class="ci-buttons" id="df-cm-buttons" style="">
+                                    <div class="alert alert-danger cm-error mt-1" style="display: none;"></div>
+                                    <div class="ci-b-right">
+                                      <div class="cb-li">
+                                        <a class="btn btn-sm btn-secondary btn-close-reply" onclick="fecharResponderComentario(<%- count + 1 %>)">Close</a>
+                                      </div>
+                                      <div class="cb-li">
+                                        <button class="btn btn-sm btn-primary ml-2">Reply</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
+                        <% if (review.botReply.date) { %>
+                        <div class="replies" id="block-reply-<%- count + 1 %>">
+                          <div class="replies-wrap" id="replies-<%- count + 1 %>" style="">
+                            <div class="cw_l-line" id="cm-43211">
+                              <div class="user-avatar">
+                                <img class="user-avatar-img" src="<%- db.botAvatar %>">
+                              </div>
+                              <div class="info">
+                                <div class="ihead">
+                                  <div class="user-name"><%= db.botName %>
+                                    <small class="text-success"><%= db.botTag %></small>
+                                  </div>
+
+                                  <div class="time">
+                                    <%= moment(review.botReply.date).fromNow(); %>
+                                  </div>
+                                </div>
+                                <div class="ibody ">
+                                  <p>
+                                    <a href=""><span class="text-success">@<%= review.userName %></span></a> <%= review.botReply.comment %>
+                                  </p>
+                                </div>
+                                <div class="ibottom">
+
+                                  <div class="ib-li ib-like">
+                                    <a class="btn cm-btn-vote">
+                                      <i class="far fa-thumbs-up mr-1"></i><span class="value"><%= review.botReply.like %></span>
+                                    </a>
+                                  </div>
+                                  <div class="ib-li ib-dislike">
+                                    <a class="btn cm-btn-vote">
+                                      <i class="far fa-thumbs-down mr-1"></i><span class="value"><%= review.botReply.dislike %></span>
+                                    </a>
+                                  </div>
+
+                                  <div class="ib-li">
+                                    <a class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h mr-1"></i>More</a>
+                                    <div class="dropdown-menu dropdown-menu-model dropdown-menu-normal" aria-labelledby="ssc-list">
+                                      <a class="dropdown-item cm-report" href="#">Report Spam </a>
+                                      <% if (req.user) { %>
+                                      <% if (req.user.id == db.ownerID || db.additionalOwners.includes(req.user.id)) { %>
+                                      <a class="dropdown-item cm-report" href="#">Delete comment </a>
+                                      <% } %>
+                                      <% } %>
+                                    </div>
+                                  </div>
+                                  <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <% } %>
+                      </div>
+                      <% }) %>
+                      <% } %>
+                    </div>
+                  </div>
+                  <script type="module">
+                    import 'https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js'
+                    import insertText from 'https://cdn.jsdelivr.net/npm/insert-text-at-cursor@0.3.0/index.js'
+
+                    document.querySelector('emoji-picker')
+                      .addEventListener('emoji-click', event => {
+                        var input = $($(event.target).data("input"));
+                        console.log(input);
+                        insertText(document.querySelector('#' + input[0].id), event.detail.unicode)
+                        
+                        // if (input[0].id != 'df-cm-content') {
+                        //     insertText(document.querySelector('#'+input[0].id), event.detail.unicode)
+                        // } else {
+                        //     insertText(document.querySelector('#df-cm-content'), event.detail.unicode)
+                        // }
+                      });
+                  </script>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="clearfix"></div>
+        </div>
+        <div id="main-sidebar">
+          <section class="trends-block trends-block_sidebar trends-block-realtime">
+            <div class="trends-block-header">
+              <div class="float-left trends-heading mr-4">
+                <h2 class="trends-title">Vote Ranking</h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="trends-block-content">
+              <div class="cbox cbox-list cbox-realtime">
+                <div class="cbox-content">
+                  <div class="rank-block-ul">
+                    <ul class="ulclear">
+                      <% dbRank.forEach((data, count) => {%>
+                      <li>
+                        <div class="trends-bot-avatar">
+                          <img style="    position: absolute;
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                          top: 0;
+                          left: 0;
+                          right: 0;
+                          bottom: 0;" data-src="<%= data.userAvatar || "//cdn.discordapp.com/embed/avatars/2.png" %>" class="bot-banner lazyload" alt="One Piece" src="<%= data.userAvatar || "//cdn.discordapp.com/embed/avatars/2.png" %>">
+                        </div>
+                        <div class="bot-recents-details">
+                          <h3 class="recents-bot-name"><a href="/profile/<%= data.userTag %>" title="One Piece" class="dynamic-name" data-jname="One Piece"><%= data.userName || "Unknown user" %></a>
+                          </h3>
+                          <div class="random-bots-desc">
+                            <span class="tags-randoms"><%= data.totalVotes %> votes</span>
+                          </div>
+                        </div>
+                        <div class="rank-vote list-wl-item"><i class="fa-solid fa-<%= count + 1 %>"></i></div>
+                        <div class="clearfix"></div>
+                      </li>
+                      <% }); %>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    
+    <%- include('../partials/_footer.ejs') %>
+  </div>
+
+  <div id="mask-overlay"></div>
+
+  <!-- basic essentials -->
+  <script type="text/javascript" src="../js/3.3.1-jquery.min.js"></script>
+  <script type="text/javascript" src="../js/js-bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../js/js-app.min.js"></script>
+
+  <!-- For detect users in mobile device -->
+  <script src="js/mobile-detect@1.4.4-mobile-detect.min.js"></script>
+
+  <!-- for comments system -->
+  <script type="text/javascript">
+    function responderComentario(id_comentario) {
+      $("#reply-" + id_comentario).show();
+    }
+
+    function fecharResponderComentario(id_comentario) {
+      $("#reply-" + id_comentario).hide();
+    }
+
+    window.onscroll = function(ev) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        window.livewire.emit('load-more');
+      }
+    };
+  </script>
+</body>
+
+</html>

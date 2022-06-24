@@ -35,7 +35,6 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -58,9 +57,12 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 [![FindBots Homepage Preview][product-screenshot]](#)
+
+<p align="center">(<a href="site/static/assets/github-images">More screenshots</a>)</p>
 
 I'm creating this botlist for learning purposes. It won't be a perfect project, far from it, but I'll try to make it the best I can.
 
@@ -68,64 +70,100 @@ I'll be working slowly, gradually I'll finish this botlist. If you're interested
 
 My goals are to create a website, a dashboard, an integrated bot and an api.
 
-Feel free to suggest suggestions during the creation process, and if you like this project, please leave one ⭐. 
-
+Feel free to suggest suggestions during the creation process, and if you like this project, please leave a ⭐.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-## Getting Started
 
-Soon...
+## Getting Started
 
 ### Prerequisites
 
-* npm
+- npm
   ```sh
   npm install npm@latest -g
   ```
 
 ### Installation
 
-_Ignore this below for now, just one example that I will change in the future._
+_Step 4 is optional. Note that you must configure all data inside config.js for the site to run smoothly._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/klaus-2/FindBots-Botlist.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. Enter your data in `config.js`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+    botconfig: {
+        ownerID: 'id', // your discord userID
+        token: 'token', // your bot token | https://discord.com/developers/applications/yourBotID/bot
+        MongoDBURL: 'mongodburl', // https://www.mongodb.com/
+    },
+   site: {
+   	client_id: "id", // bot clientID
+   	secret: "secret", // bot client secret for auth
+   	description: "desc...", // Description for site metatags
+   	domain: "https://domain", // domain with protocol without / (E.g. http://127.0.0.1)
+   	port: "port", // port (E.g 80)
+   	analitics: false, // For Dashboard analitcs -[Page views, geo]-
+   	fakeData: false,
+   	tags: ['Music', 'Fun', 'Economy', 'Anime', 'Game', 'Meme', 'Social', 'Leveling', 'Roleplay', 'Logging', 'Dashboard', 'Stream', 'Utility', 'Moderation', 'Crypto', 'Media', 'Customizable', 'Nsfw', 'Infantil', 'Game', 'Multipurpose', 'Multiple-Language', 'Slash Commands'],
+   },
+   server: {
+   	id: "ID"
+   },
+   // API SETTINGS (For future)
+   API: {
+   	port: 'port',
+   	token: 'token',
+   },
    ```
+4. In config.js, `fakeData: false` change to true if you want to use dummy data for a better view of current site features.
+
+5. Open `start.bat` to start the website and bot.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
+
 ## Roadmap
 
-- [x] Estrutura base
+- [x] Website base structure
+- [x] Basic Bot
+- [ ] Advanced bot
+  - [ ] Logs
+  - [ ] Commands (Like !queue, !vote <bodID>)
 - [ ] User Dashboard
-    - [ ] Profile
-    - [ ] Bot/Server Settings
+  - [ ] Profile (Router /@me & /@users/userID)
+  - [ ] Bot/Server Settings
+  - [ ] API Settings
 - [ ] Admin Dashboard
-- [ ] Bot
 - [ ] API
 - [ ] Multi-language Support
-    - [ ] Portuguese
-    - [ ] English
-    - [ ] Others...
+  - [ ] Portuguese
+  - [ ] English
+  - [ ] Others...
+- [ ] Add Servers
+- [ ] Badges for Users & Bots
+- [ ] Areas for bot banners boosted
+- [ ] Search System
+- [ ] Queue System base
+  - [ ] Admin page (View, approve and denied)
+  - [ ] User page (View position)
+- [ ] Finish the Comment System
+  - [ ] Add Star Rating
 
 See the [open issues](https://github.com/klaus-2/FindBots-Botlist/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -141,30 +179,27 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Discord - [Klaus#1565](https://discordapp.com/users/622812963572809771/)
 
 DawnForge Server - [Invite link](https://discord.gg/D8dWtRWfYt)
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/klaus-2/FindBots-Botlist.svg?style=for-the-badge
 [contributors-url]: https://github.com/klaus-2/FindBots-Botlist/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/klaus-2/FindBots-Botlist.svg?style=for-the-badge
@@ -177,4 +212,4 @@ DawnForge Server - [Invite link](https://discord.gg/D8dWtRWfYt)
 [license-url]: https://github.com/klaus-2/FindBots-Botlist/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: site/static/assets/github-images/home.png

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('../partials/_head.ejs') %>
+  <title>Vote <%- db.botName %> | FindBots</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Questrial" type="text/css">
+  <link rel="stylesheet" href="<%- domain %>/css/css-bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="<%- domain %>/css/css-link.css" type="text/css">
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <%- include("../partials/_sidebar.ejs", { tags }) %>
+  <!-- NAVBAR -->
+  <%- include('../partials/_navbar.ejs') %>
+  <section class="content">
+    <div class="container" style="max-width: 1430px;display: flex;flex-direction: column;align-items: stretch;">
+      <img class="xd1" style="max-width: 190px;position: absolute;" src="<%- db.botAvatar %>" alt="bot avatar">
+      <h2 class="recents-bot-name dynamic-name" title="<%- db.botName %>" style="position: absolute;margin-top: 212px;margin-left: 30px;"><%- db.botName %></h2>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="skip-container">
+            <div class="text-center">
+              <h4>Please click the button below to proceed witch vote.</h4>
+              <!-- <div class="custom-control custom-checkbox">
+                <input id="checkbox-1" type="checkbox" name="checkbox-1" class="custom-control-input" value="true">
+                <label for="checkbox-1" class="custom-control-label" style="padding: 3px;">
+                  Remind me in 12 hours
+                </label>
+              </div> -->
+              <form role="form" action="/bot/<%= db.botID %>/vote" method="POST">
+                <input name="xesqd" type="hidden">
+                <button type="submit" id="btn-main" name="btn-main" class="btn btn-main disabled">Vote</button>
+              </form>
+              <span class="desc">You can <a style="	outline: 0;
+	color: #f06060;
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+	text-decoration: none;">vote</a> once every 12 hours.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include('../partials/_footer.ejs') %>
+
+  <script>
+    setTimeout(function() {
+      $('#btn-main').removeClass('disabled');
+    }, 5000);
+  </script>
+
+  <script data-cfasync="false" src="<%- domain %>/js/cloudflare-static-email-decode.min.js"></script>
+  <script type="text/javascript" src="<%- domain %>/js/3.3.1-jquery.min.js"></script>
+  <script type="text/javascript" src="<%- domain %>/js/js-bootstrap.bundle.min.js"></script>
+  <script src="<%- domain %>/js/dist-js.cookie.min.js"></script>
+  <script src="<%- domain %>/js/mobile-detect@1.4.4-mobile-detect.min.js"></script>
+  <script type="text/javascript" src="<%- domain %>/js/js-app.min.js"></script>
+  <script type="text/javascript" src="<%- domain %>/js/js-common.js"></script>
+  <script type="text/javascript" src="<%- domain %>/js/js-movie.js"></script>
+</body>
+
+</html>

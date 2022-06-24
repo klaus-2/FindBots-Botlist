@@ -1,0 +1,46 @@
+<div id="sidebar_menu_bg"></div>
+<div id="sidebar_menu">
+  <button class="btn btn-radius btn-sm btn-secondary toggle-sidebar" id="fechar-menu-sidebar">
+    <i class="fas fa-angle-left mr-2"></i>Close menu</button>
+  <div class="sb-setting">
+    <div class="header-setting">
+      <div class="hs-toggles">
+        <div class="row mb-3">
+          <div class="col-4">
+            <a href="/login" class="hst-item" data-toggle="tooltip" data-original-title="Login">
+              <div class="hst-icon"><i class="fas fa-user"></i></div>
+              <div class="name"><span>Login</span></div>
+            </a>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="nav sidebar_menu-list">
+    <li class="nav-item active"><a class="nav-link" href="#" title="Home">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" title="Add Bot">Add Bot</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" title="Feedback">Feedback</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" title="Terms">Terms</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" title="Request Data">Request Data</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" title="Submit Ticket">Submit Ticket</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" target="_blank" title="Discord">Discord</a></li>
+    <li class="nav-item">
+      <div class="nav-link" title="Tags"><strong>Tags</strong></div>
+      <div class="sidebar_menu-sub show" id="sidebar_tags">
+        <ul class="nav color-list sub-menu">
+          <% for (const botags of tags) { %>
+          <li class="nav-item"><a class="nav-link" href="search?<%- botags %>"><%- botags %></a></li>
+          <% } %>
+          <li class="nav-item nav-more">
+            <a class="nav-link"><i class="fas fa-plus mr-2"></i>More</a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</div>
