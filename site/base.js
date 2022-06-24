@@ -345,7 +345,7 @@ module.exports = async (client) => {
     //------------------- REDIRECT NON-EXISTENT PAGES TO 404 PAGE -------------------//
     app.get("*", (req, res) => {
         var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-        if (fullUrl == domain || fullUrl == `https://hopebot.xyz/style.css` || fullUrl == `https://hopebot.xyz/style.css` || fullUrl == `https://hopebot.xyz/favico.ico`) {
+        if (fullUrl == domain || fullUrl == `${site.domain}/style.css` || fullUrl == `${site.domain}/style.css` || fullUrl == `${site.domain}/favico.ico`) {
             renderTemplate(res, req, "index.ejs");
         } else {
             res.redirect("/404?error=notfound");
