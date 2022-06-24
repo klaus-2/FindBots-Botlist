@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/klaus-2/FindBots-Botlist">
-    <img src="https://github.com/klaus-2/FindBots-Botlist/blob/main/static/github-images/findbots-icon-logo.png" alt="Logo" width="80" height="80">
+    <img src="site/static/assets/github-images/findbots-icon-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">FindBots Botlist</h3>
