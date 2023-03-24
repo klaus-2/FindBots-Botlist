@@ -23,7 +23,7 @@
     "markdown-it": "^13.0.1",
     "memorystore": "^1.6.7",
     "moment": "^2.29.3",
-    "mongoose": "^6.3.5",
+    "mongoose": "^7.0.3",
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4",
     "patch": "^0.0.1",
